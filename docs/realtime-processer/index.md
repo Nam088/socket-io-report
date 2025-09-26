@@ -45,7 +45,7 @@ npm run test:20k
 | Name | drkumo-realtime-processor-7cd59989f6 |
 | Namespace | d5 |
 | Status | Running (2/2 Ready) |
-| Node | ip-10-0-14-98.us-west-2.compute.internal |
+| Node | **ip-10-0-**-**.us-west-2.compute.internal** |
 
 ## ⚙️ Resource Configuration (affects WebSocket perf) {#resource-config}
 
@@ -124,8 +124,8 @@ From phase 3 onward, messages were not delivered (coverage 0%). This indicates a
 ### 📈 System Metrics
 | Metric | Value | Unit |
 |--------|-------|------|
-| CPU Peak | 95 | m |
-| Memory Peak | 182 | MB |
+| **RAM RSS Peak** | 182 | MB |
+| **CPU Peak** | 95 | m |
 | Memory per Connection (approx) | 159 | KB |
 
 ### 🧮 Summary
@@ -220,8 +220,8 @@ After reaching 5,000 active connections, the active count gradually decreased ov
 ### 📈 System Metrics
 | Metric | Value | Unit |
 |--------|-------|------|
-| CPU Peak | 0.0377 | cores |
-| Memory Peak | 343 | MiB |
+| **RAM RSS Peak** | 343 | MiB |
+| **CPU Peak** | 0.0377 | cores |
 | Memory per Connection (approx) | 46 | KB |
 
 ### 🧮 Summary
@@ -291,8 +291,8 @@ Per-batch message coverage (sample)
 ### 📈 System Metrics
 | Metric | Value | Unit |
 |--------|-------|------|
-| CPU Peak | 0.112 | cores |
-| Memory Peak | 472 | MiB |
+| **RAM RSS Peak** | 472 | MiB |
+| **CPU Peak** | 0.112 | cores |
 | Memory per Connection (approx) | 29 | KB |
 
 ### 🧮 Summary
@@ -375,8 +375,8 @@ Possible causes: server broadcast back‑pressure, WS upgrade path under mesh, i
 ### 📈 System Metrics
 | Metric | Value | Unit |
 |--------|-------|------|
-| CPU Peak | 0.106 | cores |
-| Memory Peak | 450 | MiB |
+| **RAM RSS Peak** | 450 | MiB |
+| **CPU Peak** | 0.106 | cores |
 | Memory per Connection (approx) | 29 | KB |
 
 ### 🧮 Summary
@@ -393,13 +393,13 @@ Possible causes: server broadcast back‑pressure, WS upgrade path under mesh, i
 - Only the first broadcast batch delivers (~1.3k msgs); subsequent batches drop to near 0% at 5k, 9k, and ~10k (capped 9,990).
 - Cumulative received stalls around 1,296–1,297 shortly after reaching target actives, even while connections remain high initially.
 - After reaching target, active connections decay over time (e.g., 9k → 8k → 6k → 4k → ~1.3k → ~100) indicating retention/timeouts/back‑pressure effects.
-- CPU peaks low-to-moderate (0.0377–0.106 cores) while memory rises (182–450+ MiB), suggesting bottleneck is not CPU but I/O/queueing/policy.
+- **RAM RSS** peaks low-to-moderate (182–450+ MiB) while **CPU** peaks low-to-moderate (0.0377–0.106 cores), suggesting bottleneck is not CPU but I/O/queueing/policy.
 - Istio sidecar present (added hop/latency and memory) across runs.
 
 ---
 
 ## 📷 Screenshots
 
-![Realtime chart 1](./img/1.jpg)
+![Realtime chart 1](./img/1.jpg "RAM RSS — snapshot 1")
 
-![Realtime chart 2](./img/2.jpg)
+![Realtime chart 2](./img/2.jpg "CPU — snapshot 2")
