@@ -77,6 +77,7 @@ Notes:
 ```
 
 #### Local Message Delivery Coverage (9 runs)
+Description: duration (60s) × messages/second (0.5 msg/s at 2000ms interval) = 30 broadcast checks (each check samples up to 10 clients).
 ```
 ┌─────────┬────────────────────────┬──────────┬──────────┬──────────┐
 │ (index) │ Message ID             │ Expected │ Received │ Coverage │
@@ -125,6 +126,7 @@ Notes:
 ```
 
 #### Connections vs RAM RSS (with phase)
+Description: duration (45s) × messages/second (1 msg/s at 1000ms interval) = 45 broadcast checks.
 ```
 ┌────────────┬────────────────────┬─────────┐
 │ Phase      │ Connections total  │ RAM RSS │
