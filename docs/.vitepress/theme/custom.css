@@ -1,0 +1,11 @@
+/* widen tables */
+.vp-doc table {
+  display: table;
+  width: 100%;
+}
+
+/* emoji icons a bit larger */
+.vp-doc p, .vp-doc li {
+  line-height: 1.7;
+}
+
