@@ -39,7 +39,17 @@ export default withMermaid(defineConfig({
           { text: 'Overview', link: '/realtime-processer/' },
           { text: 'Architecture', link: '/realtime-processer/#architecture' },
           { text: 'Metrics', link: '/realtime-processer/#metrics-collected' },
-          { text: 'Test Cases', link: '/realtime-processer/#test-cases' }
+          { text: 'Test Cases', link: '/realtime-processer/#test-cases' },
+          { text: 'Pod Overview', link: '/realtime-processer/#pod-overview' },
+          { text: 'Resource Config', link: '/realtime-processer/#resource-config' },
+          { text: 'Actual Usage', link: '/realtime-processer/#actual-usage' },
+          { text: 'Runtime Notes', link: '/realtime-processer/#runtime-notes' },
+          { text: 'Ulimits', link: '/realtime-processer/#ulimits' },
+          { text: 'Perf 1k', link: '/realtime-processer/#perf-1k' },
+          { text: 'Perf 5k', link: '/realtime-processer/#perf-5k' },
+          { text: 'Perf 9k', link: '/realtime-processer/#perf-9-000-connections' },
+          { text: 'Perf ~10k', link: '/realtime-processer/#performance-results-10-000-connections-capped-at-9-990' },
+          { text: 'Screenshots', link: '/realtime-processer/#screenshots' }
         ]
       }
     ],

@@ -9,7 +9,7 @@ Collects metrics (RAM, CPU, connections, coverage) and writes load reports used 
 - 🧪 Test cases
 - 🔗 See: [/local/](/local/) for results
 
-## 🔧 Architecture
+## 🔧 Architecture {#architecture}
 
 ```mermaid
 flowchart TD
@@ -20,14 +20,14 @@ flowchart TD
   E --> F[Render tables in Local]
 ```
 
-## 📈 Metrics collected
+## 📈 Metrics collected {#metrics-collected}
 
 - RAM: rss, heapUsed, heapTotal, external, arrayBuffers
 - CPU: peak, average (interval-based)
 - Connections: total, per-namespace
 - Messages: expected vs received, per-batch coverage
 
-## 🧪 Test cases
+## 🧪 Test cases {#test-cases}
 
 Use the benchmark CLI to drive scenarios; reports are generated alongside.
 
@@ -38,7 +38,7 @@ npm run test:20k
 
 ---
 
-## 🚀 Pod Overview (d5)
+## 🚀 Pod Overview (d5) {#pod-overview}
 
 | Component | Specification |
 |-----------|---------------|
@@ -47,7 +47,7 @@ npm run test:20k
 | Status | Running (2/2 Ready) |
 | Node | ip-10-0-14-98.us-west-2.compute.internal |
 
-## ⚙️ Resource Configuration (affects WebSocket perf)
+## ⚙️ Resource Configuration (affects WebSocket perf) {#resource-config}
 
 | Parameter | Value | Impact |
 |-----------|-------|--------|
@@ -55,7 +55,7 @@ npm run test:20k
 | Memory Request/Limit | 4 GB / 8 GB | Prevent OOM kill and GC pressure |
 | File Descriptors (ulimit) | 1,048,576 | Max concurrent connections |
 
-## 📊 Actual Resource Usage
+## 📊 Actual Resource Usage {#actual-usage}
 
 | Component | Usage | Impact |
 |-----------|-------|--------|
@@ -63,13 +63,13 @@ npm run test:20k
 | Memory Usage | 105 MiB | Low memory footprint |
 | Istio Sidecar | 56 MiB | Adds latency and memory overhead |
 
-## 📦 Runtime Notes (perf-related)
+## 📦 Runtime Notes (perf-related) {#runtime-notes}
 
 - Istio: enabled (adds hop/latency and memory). Consider bypass for WS paths if needed.
 - App container ports: http 8000/TCP, health 8888/TCP (probes OK).
 - Requests/Limits: CPU 2/4 cores, Memory 4/8 GiB.
 
-## 🔒 Pod Resource Limits (ulimit -a)
+## 🔒 Pod Resource Limits (ulimit -a) {#ulimits}
 
 | Parameter | Value | Impact |
 |-----------|-------|--------|
@@ -77,7 +77,7 @@ npm run test:20k
 
 ---
 
-## 📊 Performance Results (1,000 Connections)
+## 📊 Performance Results (1,000 Connections) {#perf-1k}
 
 ### 🚀 Connection Performance
 | Metric | Value | Unit |
@@ -138,7 +138,7 @@ From phase 3 onward, messages were not delivered (coverage 0%). This indicates a
 
 ---
 
-## 📊 Performance Results (5,000 Connections)
+## 📊 Performance Results (5,000 Connections) {#perf-5k}
 
 ### 🚀 Connection Performance
 | Metric | Value | Unit |
