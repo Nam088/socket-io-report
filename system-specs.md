@@ -23,21 +23,20 @@
 │ file descriptors    │ 1,048,575   │ **Critical for connections**        │
 └─────────────────────┴─────────────┴─────────────────────────────────────┘
 ```
-## Configuration Documentation Links
-- **Socket.IO Official Docs**: https://socket.io/docs/v4/
-- **Server Options**: https://socket.io/docs/v4/server-options/
-- **Server Installation**: https://socket.io/docs/v4/server-installation/
-- **System Limits (ulimit)**: https://phoenixnap.com/kb/ulimit-linux-command
-- **IBM ulimit Guidelines**: https://www.ibm.com/support/pages/guidelines-setting-ulimits-websphere-application-server/
-- **MongoDB ulimit Reference**: https://www.mongodb.com/docs/manual/reference/ulimit/
-- **Oracle ulimit Manual**: https://docs.oracle.com/cd/E88353_01/html/E37839/ulimit-1.html
 
 ---
-*Generated on: $(date)*
 
 ## Benchmarks
 
-### Config: connections=10000, rate=50/s, duration=60s, interval=2000ms, port=3344
+### Test case: connections=10000, rate=50/s, duration=60s, interval=2000ms, port=3344
+
+Notes:
+- Two phases by design (per client.ts):
+  1) Connect 10,000 clients at 50 conn/s (≈200s total)
+  2) Keep-alive for 60s and send messages every 2000ms
+- Message testing targets a random sample (up to 10 clients) each interval
+- RAM spiked >300 MB during message phase (server processing overhead)
+- See terminal for raw server/client logs
 
 #### Benchmark Summary
 ```
@@ -56,14 +55,6 @@
 │ Est. max at this footprint   │ ~53,315 connections        │
 └──────────────────────────────┴────────────────────────────┘
 ```
-
-Notes:
-- Two phases by design (per client.ts):
-  1) Connect 10,000 clients at 50 conn/s (≈200s total)
-  2) Keep-alive for 60s and send messages every 2000ms
-- Message testing targets a random sample (up to 10 clients) each interval
-- RAM spiked >300 MB during message phase (server processing overhead)
-- See terminal for raw server/client logs
 
 #### Connections vs RAM RSS (with phase)
 ```
@@ -105,7 +96,14 @@ Notes:
 <!-- To add a new test case, duplicate this subsection and adjust the config line and tables accordingly. -->
 
 
-### Config: connections=10000, rate=200/s, duration=45s, interval=1000ms, port=3344
+### Test case: connections=10000, rate=200/s, duration=45s, interval=1000ms, port=3344
+
+Notes:
+- Two phases by design (per client.ts):
+  1) Connect 10,000 clients at 200 conn/s (≈50.2s total)
+  2) Keep-alive for 45s and send messages every 1000ms
+- Intermittent client ping timeouts observed around tear-down; no impact on connection success
+- CPU saturated during peak
 
 #### Benchmark Summary
 ```
@@ -125,13 +123,6 @@ Notes:
 │ Overall score (B)            │ 78.9%                      │
 └──────────────────────────────┴────────────────────────────┘
 ```
-
-Notes:
-- Two phases by design (per client.ts):
-  1) Connect 10,000 clients at 200 conn/s (≈50.2s total)
-  2) Keep-alive for 45s and send messages every 1000ms
-- Intermittent client ping timeouts observed around tear-down; no impact on connection success
-- CPU saturated during peak
 
 #### Connections vs RAM RSS (with phase)
 ```
