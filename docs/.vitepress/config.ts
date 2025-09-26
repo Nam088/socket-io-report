@@ -37,7 +37,9 @@ export default withMermaid(defineConfig({
         collapsed: true,
         items: [
           { text: 'Overview', link: '/realtime-processer/' },
-          { text: 'Benchmark Test Cases', link: '/realtime-processer/#benchmark-test-cases' }
+          { text: 'Architecture', link: '/realtime-processer/#architecture' },
+          { text: 'Metrics', link: '/realtime-processer/#metrics-collected' },
+          { text: 'Test Cases', link: '/realtime-processer/#test-cases' }
         ]
       }
     ],

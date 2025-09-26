@@ -4,7 +4,7 @@
 Use the sidebar to jump to 5k/10k/20k/32k. Tables include RAM vs connections and per-batch coverage.
 :::
 
-## 🖥️ System Environment <Badge type="info" text="env" />
+## 🖥️ System Environment <Badge type="info" text="env" /> {#system-environment}
 
 ### Hardware Specifications
 | Component | Specification |
@@ -23,7 +23,7 @@ Use the sidebar to jump to 5k/10k/20k/32k. Tables include RAM vs connections and
 
 ---
 
-## 🧪 Test Architecture <Badge type="tip" text="workflow" />
+## 🧪 Test Architecture <Badge type="tip" text="workflow" /> {#test-architecture}
 
 ### Client Workflow
 Creates Socket.IO clients up to target count with throttled connection rate. Each client connects with retry logic (exponential backoff), maintains connections for configured duration, and optionally sends periodic messages to random subsets.
@@ -42,7 +42,7 @@ flowchart TD
 
 ---
 
-## 📊 Performance Results (5,000 Connections) <Badge type="tip" text="5k" />
+## 📊 Performance Results (5,000 Connections) <Badge type="tip" text="5k" /> {#performance-results-5-000-connections}
 
 ### 🚀 Connection Performance
 | Metric | Value | Unit |
@@ -97,7 +97,7 @@ Per-batch message coverage (10 samples)
 
 ---
 
-## 📊 Performance Results (10,000 Connections) <Badge type="tip" text="10k" />
+## 📊 Performance Results (10,000 Connections) <Badge type="tip" text="10k" /> {#performance-results-10-000-connections}
 
 ### 🚀 Connection Performance
 | Metric | Value | Unit |
@@ -151,7 +151,7 @@ Per-batch message coverage (10 samples)
 
 ---
 
-## 📊 Performance Results (20,000 Connections) <Badge type="warning" text="20k" />
+## 📊 Performance Results (20,000 Connections) <Badge type="warning" text="20k" /> {#performance-results-20-000-connections}
 
 ### 🚀 Connection Performance
 | Metric | Value | Unit |
@@ -204,7 +204,7 @@ Per-batch message coverage (10 samples)
 
 ---
 
-## 📊 Performance Results (32,000 Connections) <Badge type="warning" text="32k" />
+## 📊 Performance Results (32,000 Connections) <Badge type="warning" text="32k" /> {#performance-results-32-000-connections}
 
 ### 🚀 Connection Performance
 | Metric | Value | Unit |
