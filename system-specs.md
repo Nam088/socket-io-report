@@ -88,7 +88,7 @@ Notes:
 #### Local Message Delivery Coverage (9 runs)
 ```
 ┌─────────┬────────────────────────┬──────────┬──────────┬──────────┐
-│ (index) │ Message ID                     │ Expected │ Received │ Coverage │
+│ (index) │ Message ID             │ Expected │ Received │ Coverage │
 ├─────────┼────────────────────────┼──────────┼──────────┼──────────┤
 │ 0       │ 1758869768943-vq3j9h  │ 9,999    │ 9,999    │ 100.0%   │
 │ 1       │ 1758869769877-5hdngz  │ 9,999    │ 9,999    │ 100.0%   │
