@@ -2,10 +2,42 @@
 .vp-doc table {
   display: table;
   width: 100%;
+  border-collapse: collapse;
 }
 
 /* emoji icons a bit larger */
 .vp-doc p, .vp-doc li {
   line-height: 1.7;
+}
+
+/* table styling: borders, zebra, hover */
+.vp-doc thead th {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc th, .vp-doc td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 8px 12px;
+}
+
+.vp-doc tbody tr:nth-child(odd) {
+  background: var(--vp-c-bg-alt);
+}
+
+.vp-doc tbody tr:hover {
+  background: color-mix(in oklab, var(--vp-c-brand) 12%, transparent);
+}
+
+/* align numbers, use tabular numerals */
+.vp-doc td:nth-child(2),
+.vp-doc td:nth-child(3) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* emphasize important values already in bold */
+.vp-doc td strong {
+  color: var(--vp-c-brand);
 }
 
