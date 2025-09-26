@@ -81,7 +81,7 @@ Notes:
 │ Idle       │ 8,000        │ 212 MB  │
 │ Idle       │ 9,000        │ 236 MB  │
 │ Idle       │ 10,000       │ 273 MB  │
-│ Message    │ 10,000       │ 313 MB  │
+│ Message    │ 10,000       │ ~313 MB │
 └────────────┴──────────────┴─────────┘
 ```
 
@@ -103,4 +103,54 @@ Notes:
 ```
 
 <!-- To add a new test case, duplicate this subsection and adjust the config line and tables accordingly. -->
+
+
+### Config: connections=10000, rate=200/s, duration=45s, interval=1000ms, port=3344
+
+#### Benchmark Summary
+```
+┌──────────────────────────────┬────────────────────────────┐
+│ Metric                       │ Value                      │
+├──────────────────────────────┼────────────────────────────┤
+│ Date                         │ $(date)                    │
+│ Target                       │ localhost:3344             │
+│ Connections                  │ 10,000                     │
+│ Duration / Rate              │ 45s (message) / 200 conn/s │
+│ Success / Fail               │ 100% / 0%                  │
+│ Avg connect time             │ 284 ms                     │
+│ Peak RAM (process)           │ ~549.2 MB                  │
+│ Peak CPU                     │ ~100%                      │
+│ RAM per connection (approx.) │ ~56.2 KB                   │
+│ Est. max at this footprint   │ ~37,290 connections        │
+│ Overall score (B)            │ 78.9%                      │
+└──────────────────────────────┴────────────────────────────┘
+```
+
+Notes:
+- Two phases by design (per client.ts):
+  1) Connect 10,000 clients at 200 conn/s (≈50.2s total)
+  2) Keep-alive for 45s and send messages every 1000ms
+- Intermittent client ping timeouts observed around tear-down; no impact on connection success
+- CPU saturated during peak
+
+#### Connections vs RAM RSS (with phase)
+```
+┌────────────┬────────────────────┬─────────┐
+│ Phase      │ Connections total  │ RAM RSS │
+├────────────┼────────────────────┼─────────┤
+│ Idle       │ 1                  │ 77.48MB │
+│ Idle       │ 461                │ 104.86MB│
+│ Idle       │ 1,460              │ 138.03MB│
+│ Idle       │ 2,459              │ 154.48MB│
+│ Idle       │ 3,459              │ 161.17MB│
+│ Idle       │ 4,458              │ 179.56MB│
+│ Idle       │ 5,458              │ 188.56MB│
+│ Idle       │ 6,457              │ 206.56MB│
+│ Idle       │ 7,457              │ 221.42MB│
+│ Idle       │ 8,457              │ 242.31MB│
+│ Idle       │ 9,457              │ 250.77MB│
+│ Idle       │ 10,000             │ 277.84MB│
+│ Message    │ 10,000 (peak)      │~549.20MB│
+└────────────┴────────────────────┴─────────┘
+```
 
